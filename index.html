@@ -3,171 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>北京旅行日记 | Beijing Travel Journal</title>
+    <title>LBS中国行行程规划</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f8f5f0;
+            background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
+            padding: 20px;
         }
+
         .container {
-            max-width: 768px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
         }
-        header {
+
+        .title {
             text-align: center;
-            padding: 30px 0;
-            background-color: #fff;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
         }
-        header h1 {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-        header p {
-            font-size: 14px;
+
+        .subtitle {
+            text-align: center;
             color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 16px;
         }
+
+        /* 城市配色 —— 只改边框和标签，字体全部黑色 */
+        .beijing {
+            border-left: 5px solid #e74c3c;
+        }
+        .beijing .day-title span {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .beijing .tips {
+            background-color: #fff0f0;
+            color: #c0392b;
+        }
+
+        .chongqing {
+            border-left: 5px solid #ff8800;
+        }
+        .chongqing .day-title span {
+            background: #ff8800;
+            color: #fff;
+        }
+        .chongqing .tips {
+            background-color: #fff5e6;
+            color: #e67e22;
+        }
+
+        .shanghai {
+            border-left: 5px solid #f1c40f;
+        }
+        .shanghai .day-title span {
+            background: #f1c40f;
+            color: #fff;
+            font-weight: bold;
+        }
+        .shanghai .tips {
+            background-color: #fffcf0;
+            color: #d35400;
+        }
+
+        /* 卡片 */
         .day-card {
-            background: #fff;
+            background: white;
             border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
         }
-        .day-header {
-            background-color: #f39c12;
-            color: white;
-            padding: 16px;
+
+        .day-title {
             font-size: 20px;
-            font-weight: 600;
-        }
-        .day-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .itinerary-section {
-            padding: 20px;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-weight: bold;
+            color: #333 !important;
         }
-        .section-title svg {
-            width: 20px;
-            height: 20px;
-            fill: #f39c12;
-        }
-        .itinerary-item {
-            margin-bottom: 16px;
-            padding-left: 8px;
-            border-left: 3px solid #f39c12;
-        }
-        .itinerary-item h4 {
-            font-size: 16px;
-            color: #e67e22;
-            margin-bottom: 4px;
-        }
-        .itinerary-item p {
+
+        .day-title span {
+            width: auto;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 14px;
-            color: #555;
+            display: inline-block;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 13px;
-            color: #7f8c8d;
+
+        .schedule-item {
+            margin-bottom: 12px;
+            padding-left: 10px;
+            color: #333;
+        }
+
+        .schedule-label {
+            font-weight: bold;
+            color: #2c3e50;
+            min-width: 85px;
+            display: inline-block;
+        }
+
+        .tips {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>北京旅行日记 🇨🇳</h1>
-            <p>Beijing Journey | 记录每一段美好时光</p>
-        </header>
+        <div class="title">LBS中国行 行程规划</div>
+        <div class="subtitle">3月29日 - 4月6日 | 中国精品行程</div>
 
-        <!-- 第一天行程 -->
-        <div class="day-card">
-            <div class="day-header">
-                Day 1 · 3月29日 聚会日
+        <!-- ========================== 北京 ========================== -->
+        <div class="day-card beijing">
+            <div class="day-title"><span>Day1</span>3月29日 北京·集合日</div>
+            <div class="tips">🚗 交通：自助打车前往酒店 | 酒店：北京燕莎中心凯宾斯基</div>
+            <div class="schedule-item">
+                <span class="schedule-label">推荐攻略：</span>
+                早到可逛颐和园、雍和宫
             </div>
-            <img src="your-first-day-image.jpg" alt="Day 1 Itinerary" class="day-image">
-            <div class="itinerary-section">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
-                    交通与住宿
-                </div>
-                <div class="itinerary-item">
-                    <h4>🚕 自助出租车前往酒店</h4>
-                    <p>北京燕莎中心凯宾斯基酒店</p>
-                </div>
-
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 18H6v-6h2v6zm3 0H9v-8h2v8zm3 0h-2v-4h2v4zm3 0h-2v-8h2v8z"/></svg>
-                    推荐行程
-                </div>
-                <div class="itinerary-item">
-                    <h4>🏯 提前抵达游览颐和园、雍和宫</h4>
-                    <p>感受皇家园林与藏传佛教文化</p>
-                </div>
-
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M11 9h2v2h-2V9zm-2 2h2v2H9v-2zm4 0h2v2h-2v-2zm2 2h2v2h-2v-2zm-4 2h2v2h-2v-2zm2 2h2v2h-2v-2zM9 7h2v4H9V7zm4 0h2v4h-2V7zm2 8h2v4h-2v-4zm-8 0h2v4H9v-4zM19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
-                    餐饮安排
-                </div>
-                <div class="itinerary-item">
-                    <h4>🍽️ 午餐：推荐免费餐饮</h4>
-                    <p>酒店周边特色美食</p>
-                </div>
-                <div class="itinerary-item">
-                    <h4>🍴 晚餐：北京八大楼</h4>
-                    <p>从酒店步行15-20分钟可达</p>
-                </div>
-
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    晚间活动
-                </div>
-                <div class="itinerary-item">
-                    <h4>🎭 京剧表演 + 白酒体验</h4>
-                    <p>纯饮/Highball两种方式感受中国白酒文化</p>
-                </div>
-                <div class="itinerary-item">
-                    <h4>🌃 亮马河夜景 + 酒吧漫步</h4>
-                    <p>在Wild Goose微醺，感受北京夜生活</p>
-                </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                18:00 京八大楼（酒店步行15-20分钟）| 京剧表演 + 白酒体验（直饮+highball）
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                亮马河观夜景 + 泡酒吧（野鹅微醺）
             </div>
         </div>
 
-        <!-- 后续天数行程可复制上面结构 -->
-        <!-- <div class="day-card">
-            <div class="day-header">Day 2 · 3月30日</div>
-            <img src="your-day2-image.jpg" alt="Day 2 Itinerary" class="day-image">
-            <div class="itinerary-section">
-                ...
+        <div class="day-card beijing">
+            <div class="day-title"><span>Day2</span>3月30日 北京</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
             </div>
-        </div> -->
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                9:00 出发 金山岭长城
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                三明治
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                长城游览、喝茶、书法体验
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                北京特色餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                SPA 放松
+            </div>
+        </div>
 
-        <footer>
-            © 2026 Beijing Travel Journal | 发布于 GitHub Pages
-        </footer>
+        <div class="day-card beijing">
+            <div class="day-title"><span>Day3</span>3月31日 北京</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                9:00 出发 | 鼓楼、什刹海、烟袋斜街、踢毽子、本地人运动、包饺子
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                饺子
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                故宫、精酿酒馆、北京校友mixer
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                自由用餐（推荐）
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                三里屯夜店 / 北方撸串
+            </div>
+        </div>
+
+        <!-- ========================== 重庆·成都 ========================== -->
+        <div class="day-card chongqing">
+            <div class="day-title"><span>Day4</span>4月1日 重庆</div>
+            <div class="tips">✈️ 飞往重庆 | 酒店：重庆大都会凯悦酒店</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                10:55-13:45 飞往重庆
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                飞机餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                李子坝、通远门 | 18:00 返回酒店
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                南山火锅
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                洪崖洞
+            </div>
+        </div>
+
+        <div class="day-card chongqing">
+            <div class="day-title"><span>Day5</span>4月2日 成都</div>
+            <div class="tips">🏨 酒店：成都天府丽都喜来登酒店</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                7:30 罗汉寺 → 高铁前往成都 → 入住酒店
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                包餐 夫妻肺片
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                大旗茶馆+表演+打麻将体验<br>
+                AB组：东郊记忆+蜀宴赋<br>
+                C组：玉林市场+老街+自由活动<br>
+                D组：太古里+大慈寺+自由活动
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                AB组：蜀宴赋包餐<br>
+                CD组：自由用餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                KTV唱歌 / bar hopping / 泡澡
+            </div>
+        </div>
+
+        <div class="day-card chongqing">
+            <div class="day-title"><span>Day6</span>4月3日 成都</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                9:00 熊猫基地
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                文殊院街区自由用餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                宽窄巷子自由活动 + cooking class 12人
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                CD组：蜀宴赋包餐<br>
+                AB组：自由用餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                成都夜店顶流 - DNA
+            </div>
+        </div>
+
+        <!-- ========================== 上海 ========================== -->
+        <div class="day-card shanghai">
+            <div class="day-title"><span>Day7</span>4月4日 上海</div>
+            <div class="tips">🏨 酒店：上海花园酒店</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                10:00 飞往上海
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                飞机餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                办理入住 上海花园酒店
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                领队带领 AA 晚餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                黄浦江邮轮 跨校狂欢
+            </div>
+        </div>
+
+        <div class="day-card shanghai">
+            <div class="day-title"><span>Day8</span>4月5日 上海</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                10:00 城隍庙 / 豫园
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 午餐：</span>
+                自由用餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌤️ 下午：</span>
+                分组自由活动（可选）
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍽️ 晚餐：</span>
+                上海菜（转角老弄堂+黄酒体验）
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🌙 夜晚：</span>
+                INS新乐园
+            </div>
+        </div>
+
+        <div class="day-card shanghai">
+            <div class="day-title"><span>Day9</span>4月6日 上海 · 解散日</div>
+            <div class="schedule-item">
+                <span class="schedule-label">☕ 早餐：</span>
+                酒店早餐
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">☀️ 上午：</span>
+                10:00 朱家角水乡
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-label">🍱 中午：</span>
+                行程解散
+            </div>
+        </div>
     </div>
 </body>
 </html>
